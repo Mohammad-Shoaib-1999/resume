@@ -25,7 +25,7 @@ const Certifications = () => {
             Certifications
           </h1>
           <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
-            Some of the quality content, I find
+            Here are some of the course work i did.
           </p>
         </div>
         <div className="flex flex-wrap m-4">
