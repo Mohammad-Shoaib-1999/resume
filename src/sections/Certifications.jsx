@@ -1,19 +1,19 @@
-import { cert1 } from "../images";
-import { cert2 } from "../images";
-
 import { TrophyIcon } from "../icons";
 import { useState } from "react";
 import { certificationsData } from "../data";
 
 const Certifications = () => {
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [fullscreenImage, setFullscreenImage] = useState(null);
 
-  const openFullscreen = () => {
+  const openFullscreen = (image) => {
     setIsFullscreen(true);
+    setFullscreenImage(image);
   };
 
   const closeFullscreen = () => {
     setIsFullscreen(false);
+    setFullscreenImage(null);
   };
 
   return (
@@ -25,7 +25,7 @@ const Certifications = () => {
             Certifications
           </h1>
           <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
-            Here are some of the course work i did.
+            Here are some of the course work I did.
           </p>
         </div>
         <div className="flex flex-wrap m-4">
@@ -34,11 +34,10 @@ const Certifications = () => {
               <div className="h-full bg-gray-100 bg-opacity-40 p-8 rounded">
                 <div className="inline-flex flex-col items-center">
                   <img
-                    alt="testimonial"
+                    alt="certificate"
                     src={certificate.image}
                     className="w-full h-auto max-w-xl mb-5 shadow-xl rounded-lg mx-auto cursor-pointer"
-                    onClick={openFullscreen}
-
+                    onClick={() => openFullscreen(certificate.image)}
                   />
                   <span className="flex-grow flex flex-col pl-4">
                     <span className="title-font font-medium text-black">
@@ -50,7 +49,6 @@ const Certifications = () => {
             </div>
           ))}
         </div>
-      
 
         {isFullscreen && (
           <div
@@ -59,7 +57,7 @@ const Certifications = () => {
           >
             <img
               className="max-w-full max-h-full"
-              src={`${cert1}`}
+              src={fullscreenImage}
               alt="fullscreen"
             />
           </div>
